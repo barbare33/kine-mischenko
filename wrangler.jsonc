@@ -1,0 +1,9 @@
+{
+  // Déploiement Cloudflare (Workers, fichiers statiques uniquement) : on publie le build Astro.
+  "name": "kine-mischenko",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash"
+  }
+}
