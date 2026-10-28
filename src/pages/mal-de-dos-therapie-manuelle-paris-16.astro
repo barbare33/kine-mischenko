@@ -1,0 +1,42 @@
+---
+import Service from '../layouts/Service.astro';
+
+const faq = [
+  { q: 'Faut-il passer une IRM avant de consulter pour un mal de dos ?', a: 'Pas forcément. Dans la grande majorité des lombalgies communes, l’imagerie n’est pas nécessaire et c’est votre médecin qui juge de son utilité. Si vous avez déjà des examens, apportez-les à la première séance.' },
+  { q: 'La thérapie manuelle, est-ce comme l’ostéopathie ?', a: 'Ce sont deux approches distinctes, même si certaines techniques se ressemblent. En kinésithérapie, la thérapie manuelle (mobilisations, techniques myotensives, travail des tissus mous) est toujours associée à des exercices actifs pour obtenir un résultat durable.' },
+  { q: 'Faut-il se reposer quand on a mal au dos ?', a: 'Les recommandations actuelles (Haute Autorité de Santé) vont dans le sens contraire : rester actif, dans la limite de la douleur, favorise la guérison. Le kinésithérapeute vous aide à doser cette activité.' },
+  { q: 'Quand faut-il consulter un médecin en urgence ?', a: 'En cas de perte de force dans une jambe, de troubles urinaires ou de l’anesthésie de la région du périnée, de fièvre associée, ou après un traumatisme important : consultez sans attendre un médecin ou les urgences.' },
+];
+---
+<Service
+  title="Kiné mal de dos Paris 16 – Lombalgie, cervicalgie, thérapie manuelle"
+  description="Kinésithérapeute à Paris 16e pour le mal de dos : lombalgie, sciatique, cervicalgie, torticolis, douleurs posturales. Thérapie manuelle et exercices personnalisés. Métro Ranelagh."
+  eyebrow="Dos & thérapie manuelle · Paris 16e"
+  h1="Mal de dos et thérapie manuelle à Paris 16"
+  lead="Lombalgie, sciatique, douleurs de nuque ou entre les omoplates : un traitement qui associe thérapie manuelle et exercices pour soulager la douleur, puis en éviter le retour."
+  crumb="Dos & thérapie manuelle"
+  faq={faq}
+>
+  <h2>Les douleurs prises en charge</h2>
+  <ul>
+    <li><strong>Lombalgie</strong> aiguë (« tour de reins ») ou chronique ;</li>
+    <li><strong>Sciatique et cruralgie</strong>, hernie discale ;</li>
+    <li><strong>Cervicalgie</strong>, torticolis, névralgie cervico-brachiale ;</li>
+    <li><strong>Dorsalgie</strong> et douleurs posturales liées au travail sur écran ;</li>
+    <li>Douleurs de dos chez le sportif, la femme enceinte ou après une grossesse (après avis médical) ;</li>
+    <li>Rééducation après chirurgie du rachis.</li>
+  </ul>
+
+  <h2>Une approche active</h2>
+  <p>Le mal de dos est rarement dû à « une vertèbre déplacée ». Il résulte le plus souvent d’un ensemble de facteurs : sensibilité des tissus, perte de mobilité, manque de condition physique, stress, sommeil, posture prolongée. Le traitement agit donc sur plusieurs leviers.</p>
+  <h3>La thérapie manuelle pour soulager</h3>
+  <p>Mobilisations articulaires, techniques sur les muscles et les tissus mous, étirements : le travail manuel permet de diminuer la douleur et de retrouver de la mobilité, ce qui facilite la reprise du mouvement.</p>
+  <h3>L’exercice pour durer</h3>
+  <p>Renforcement des muscles du tronc et des membres inférieurs, travail de la mobilité, réapprentissage des gestes du quotidien : c’est l’exercice qui donne des résultats durables. Vous repartez avec un programme court, réalisable chez vous.</p>
+  <h3>L’éducation pour comprendre</h3>
+  <p>Comprendre sa douleur réduit l’appréhension et aide à bouger de nouveau sans crainte. Des conseils adaptés à votre poste de travail, votre sport et votre rythme de vie complètent la prise en charge.</p>
+
+  <blockquote>Un dos qui bouge est un dos qui guérit : l’objectif est de vous rendre autonome, pas dépendant des séances.</blockquote>
+
+  <p>À lire aussi : <a href="/blog/lombalgie-que-faire/">Lombalgie : que faire et quand consulter un kiné ?</a></p>
+</Service>

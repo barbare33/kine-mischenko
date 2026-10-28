@@ -1,0 +1,40 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import MapEmbed from '../../components/MapEmbed.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { site } from '../../data/site';
+---
+<Base
+  lang="en"
+  title="Physiotherapy Practice Location – 51 bd de Beauséjour, Paris 16th"
+  description="Anastasia Mischenko’s physiotherapy practice: 51 boulevard de Beauséjour, 75016 Paris. 3 minutes from Ranelagh metro (line 9), near La Muette and RER C Boulainvilliers."
+  crumbs={[{ name: 'Home', href: '/en/' }, { name: 'Location', href: '/en/practice-location/' }]}
+>
+  <PageHero
+    lang="en"
+    eyebrow="Location"
+    title="The practice, boulevard de Beauséjour"
+    lead="A quiet ground-floor practice between the Ranelagh gardens and La Muette, easily reached by metro and RER."
+  />
+  <section class="section">
+    <div class="wrap grid grid--2">
+      <div class="prose">
+        <h2>Address</h2>
+        <p><strong>{site.address.street}<br />75016 Paris, France</strong></p>
+        <p><a class="btn btn--ghost" href={site.mapsUrl} target="_blank" rel="noopener">Get directions</a></p>
+        <h2>Public transport</h2>
+        <ul>
+          <li><strong>Metro line 9 – Ranelagh</strong>: about 3 min walk</li>
+          <li><strong>Metro line 9 – La Muette</strong>: about 7 min walk</li>
+          <li><strong>RER C – Boulainvilliers</strong>: about 8 min walk</li>
+        </ul>
+        <h2>Accessibility</h2>
+        <p>The practice is on the <strong>ground floor</strong>. All treatment takes place at the practice (no home visits).</p>
+        <p>Patients come from across the 16th arrondissement — La Muette, Passy, Auteuil, Trocadéro — as well as Neuilly-sur-Seine and Boulogne-Billancourt.</p>
+      </div>
+      <MapEmbed title="Map: physiotherapy practice at 51 boulevard de Beauséjour, Paris 16th" />
+    </div>
+  </section>
+  <CtaBand lang="en" />
+</Base>

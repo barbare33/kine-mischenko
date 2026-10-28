@@ -1,0 +1,153 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site, ui, alternateOf, type Lang } from '../data/site';
+
+interface Crumb { name: string; href: string }
+interface Props {
+  title: string;
+  description: string;
+  lang?: Lang;
+  crumbs?: Crumb[];
+  schema?: Record<string, unknown>[];
+  ogType?: 'website' | 'article';
+  noindex?: boolean;
+}
+
+const { title, description, lang = 'fr', crumbs = [], schema = [], ogType = 'website', noindex = false } = Astro.props;
+const t = ui[lang];
+const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonical = new URL(path, site.url).href;
+const alt = alternateOf(path);
+const ogImage = new URL('/og.jpg', site.url).href;
+
+// Fiche établissement (SEO local) présente sur toutes les pages.
+const business = {
+  '@context': 'https://schema.org',
+  '@type': 'Physiotherapy',
+  '@id': `${site.url}/#cabinet`,
+  name: `${site.name} – Kinésithérapeute Paris 16`,
+  url: `${site.url}/`,
+  telephone: site.phone,
+  image: ogImage,
+  priceRange: '45 € – 68 €',
+  currenciesAccepted: 'EUR',
+  paymentAccepted: 'Cash, Cheque, Bank transfer',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    postalCode: site.address.postalCode,
+    addressLocality: site.address.city,
+    addressRegion: 'Île-de-France',
+    addressCountry: site.address.country,
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng },
+  hasMap: site.mapsUrl,
+  areaServed: ['Paris 16e', 'Passy', 'La Muette', 'Ranelagh', 'Auteuil', 'Boulogne-Billancourt'],
+  knowsLanguage: ['fr', 'en'],
+  medicalSpecialty: ['Musculoskeletal', 'PhysicalTherapy'],
+  availableService: [
+    { '@type': 'MedicalTherapy', name: 'Kinésithérapie du sport' },
+    { '@type': 'MedicalTherapy', name: 'Rééducation post-opératoire' },
+    { '@type': 'MedicalTherapy', name: 'Thérapie manuelle et rééducation du dos' },
+    { '@type': 'MedicalTherapy', name: 'Kinésithérapie respiratoire et cardio-vasculaire' },
+  ],
+  potentialAction: {
+    '@type': 'ReserveAction',
+    target: { '@type': 'EntryPoint', urlTemplate: site.doctolib },
+  },
+  employee: {
+    '@type': 'Person',
+    '@id': `${site.url}/#anastasia`,
+    name: site.name,
+    jobTitle: 'Masseur-Kinésithérapeute D.E.',
+    alumniOf: 'IFMK Saint-Michel, Paris',
+    knowsLanguage: ['fr', 'en'],
+    identifier: { '@type': 'PropertyValue', propertyID: 'RPPS', value: site.rpps },
+  },
+};
+
+const breadcrumb = crumbs.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: crumbs.map((c, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: c.name,
+        item: new URL(c.href, site.url).href,
+      })),
+    }
+  : null;
+
+const allSchema = [business, ...(breadcrumb ? [breadcrumb] : []), ...schema];
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    {alt.fr && <link rel="alternate" hreflang="fr" href={new URL(alt.fr, site.url).href} />}
+    {alt.en && <link rel="alternate" hreflang="en" href={new URL(alt.en, site.url).href} />}
+    {alt.fr && <link rel="alternate" hreflang="x-default" href={new URL(alt.fr, site.url).href} />}
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'en_GB'} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="geo.region" content="FR-75" />
+    <meta name="geo.placename" content="Paris 16e" />
+    <meta name="geo.position" content={`${site.geo.lat};${site.geo.lng}`} />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#2e4a45" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    {allSchema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+  </head>
+  <body>
+    <Header lang={lang} path={path} />
+
+    {crumbs.length > 1 && (
+      <nav class="crumbs wrap" aria-label={lang === 'fr' ? "Fil d'Ariane" : 'Breadcrumb'}>
+        <ol>
+          {crumbs.map((c, i) => (
+            <li>{i < crumbs.length - 1 ? <a href={c.href}>{c.name}</a> : <span aria-current="page">{c.name}</span>}</li>
+          ))}
+        </ol>
+      </nav>
+    )}
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <Footer lang={lang} />
+
+    <div class="mbar" role="complementary" aria-label={t.book}>
+      <a class="btn btn--ghost" href={`tel:${site.phone}`}>{t.call}</a>
+      <a class="btn btn--primary" href={site.doctolib} target="_blank" rel="noopener">{t.book}</a>
+    </div>
+
+    <style>
+      .mbar {
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+        display: grid; grid-template-columns: 1fr 2fr; gap: 8px;
+        padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+        background: rgba(250, 247, 242, 0.97); border-top: 1px solid var(--stone);
+      }
+      .mbar .btn { padding: 0.85em 1em; }
+      @media (min-width: 768px) { .mbar { display: none; } }
+    </style>
+  </body>
+</html>

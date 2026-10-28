@@ -1,0 +1,107 @@
+---
+import Base from '../../layouts/Base.astro';
+import Faq from '../../components/Faq.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import MapEmbed from '../../components/MapEmbed.astro';
+import { site, services } from '../../data/site';
+
+const faq = [
+  {
+    q: 'Do I need a prescription to see a physiotherapist in France?',
+    a: 'To be reimbursed by the French health insurance (Assurance Maladie), you generally need a doctor’s prescription. If you have international or private insurance, check your policy: many reimburse physiotherapy on presentation of an invoice.',
+  },
+  {
+    q: 'Are sessions held in English?',
+    a: 'Yes. Anastasia Mischenko speaks English and sessions, explanations and home exercise programmes can be entirely in English.',
+  },
+  {
+    q: 'How much does a session cost?',
+    a: `The first session (assessment) is €${site.prices.first} and follow-up sessions are €${site.prices.session}. Payment by cheque, cash or bank transfer (cards are not accepted). <a href="/en/fees/">Fees and reimbursement</a>.`,
+  },
+  {
+    q: 'How do I book?',
+    a: `Online via <a href="${site.doctolib}" target="_blank" rel="noopener">Doctolib</a> (available in English) or by phone at <a href="tel:${site.phone}">${site.phoneDisplayIntl}</a>.`,
+  },
+];
+---
+<Base
+  lang="en"
+  title="English-Speaking Physiotherapist Paris 16 – Anastasia Mischenko"
+  description="English-speaking physiotherapist in Paris 16th (51 bd de Beauséjour, Ranelagh metro): sports injuries, post-surgery rehabilitation, back pain. Book online via Doctolib."
+>
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div>
+        <span class="eyebrow">Physiotherapist · Paris 16th · English spoken</span>
+        <h1>Sports physiotherapy &amp; rehabilitation <em>in Paris 16th</em></h1>
+        <hr class="rule" />
+        <p class="lead">
+          Anastasia Mischenko is a French state-registered physiotherapist offering personalised treatment in English:
+          sports injuries, recovery after orthopaedic surgery and back pain.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href={site.doctolib} target="_blank" rel="noopener">Book an appointment</a>
+          <a class="btn btn--ghost" href={`tel:${site.phone}`}>{site.phoneDisplayIntl}</a>
+        </div>
+      </div>
+      <aside class="infos" aria-label="Practical information">
+        <p class="infos__h">The practice</p>
+        <dl>
+          <div><dt>Address</dt><dd>{site.address.street}<br />75016 Paris</dd></div>
+          <div><dt>Getting here</dt><dd>Metro Ranelagh (9) · La Muette (9)<br />RER C Boulainvilliers</dd></div>
+          <div><dt>Languages</dt><dd>English · French</dd></div>
+        </dl>
+        <a href="/en/practice-location/" class="infos__link">Map &amp; directions →</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow">Treatments</span>
+      <h2>Rehabilitation tailored to you</h2>
+      <p class="lead">Every course of treatment starts with a thorough assessment to understand the cause of your pain or limitation, agree on goals together and build a personalised programme.</p>
+      <div class="grid grid--3" style="margin-top:2.5rem">
+        {services.en.map((s, i) => (
+          <a class="card" href={s.href}>
+            <span class="svc__n">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{s.label}</h3>
+            <p>{s.short}</p>
+            <span class="more">Learn more →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="wrap grid grid--2" style="align-items:center">
+      <div>
+        <span class="eyebrow">Your physiotherapist</span>
+        <h2>Anastasia Mischenko</h2>
+        <p>A graduate of IFMK Saint-Michel in Paris, Anastasia worked in hospital settings, including the orthopaedic department of Ambroise-Paré Hospital (Boulogne-Billancourt) from 2023 to 2025.</p>
+        <p>This experience in post-operative rehabilitation and trauma now shapes her private practice, focused on sport and functional recovery.</p>
+        <a href="/en/about/" class="btn btn--ghost" style="margin-top:1rem">About Anastasia</a>
+      </div>
+      <MapEmbed title="Map of the physiotherapy practice at 51 boulevard de Beauséjour, Paris 16th" />
+    </div>
+  </section>
+
+  <Faq items={faq} lang="en" />
+  <CtaBand lang="en" />
+</Base>
+
+<style>
+  .hero { padding: clamp(48px, 8vw, 112px) 0; border-bottom: 1px solid var(--stone); }
+  .hero__grid { display: grid; gap: 48px; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); align-items: center; }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .infos { background: var(--white); border: 1px solid var(--stone); padding: 32px; border-radius: var(--radius); }
+  .infos__h { font-family: var(--serif); font-size: 1.6rem; margin-bottom: 1rem; }
+  .infos dl { margin: 0; }
+  .infos dl > div { padding: 0.8rem 0; border-top: 1px solid var(--stone); }
+  .infos dt { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+  .infos dd { margin: 0.2rem 0 0; font-size: 0.95rem; }
+  .infos__link { display: inline-block; margin-top: 1rem; font-size: 0.9rem; }
+  @media (max-width: 900px) { .hero__grid { grid-template-columns: 1fr; } }
+  .svc__n { font-family: var(--serif); font-size: 1rem; color: var(--gold); display: block; margin-bottom: 1.2rem; }
+</style>

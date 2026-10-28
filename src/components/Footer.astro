@@ -1,0 +1,64 @@
+---
+import { site, ui, services, type Lang } from '../data/site';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+const fr = lang === 'fr';
+---
+<footer class="ftr">
+  <div class="wrap ftr__grid">
+    <div>
+      <p class="ftr__name">{site.name}</p>
+      <p class="ftr__sub">{fr ? site.title : site.titleEn}</p>
+      <p class="ftr__note">{t.footerNote}</p>
+    </div>
+    <div>
+      <p class="ftr__h">{t.address}</p>
+      <address>
+        {site.address.street}<br />
+        {site.address.postalCode} {site.address.city}
+      </address>
+      <p><a href={site.mapsUrl} target="_blank" rel="noopener">{fr ? 'Itinéraire' : 'Directions'}</a></p>
+      <p><a href={`tel:${site.phone}`}>{fr ? site.phoneDisplay : site.phoneDisplayIntl}</a></p>
+    </div>
+    <div>
+      <p class="ftr__h">{fr ? 'Soins' : 'Treatments'}</p>
+      <ul>
+        {services[lang].map((s) => <li><a href={s.href}>{s.label}</a></li>)}
+      </ul>
+    </div>
+    <div>
+      <p class="ftr__h">{t.bookShort}</p>
+      <p><a class="btn btn--light" href={site.doctolib} target="_blank" rel="noopener">{t.book}</a></p>
+      <p class="ftr__small">{t.bookOn}</p>
+    </div>
+  </div>
+  <div class="wrap ftr__bottom">
+    <span>© {new Date().getFullYear()} {site.name} · {t.rpps} {site.rpps}</span>
+    <span>
+      <a href={fr ? '/mentions-legales/' : '/en/legal-notice/'}>{t.legal}</a>
+      {fr && <> · <a href="/blog/">Conseils</a></>}
+    </span>
+  </div>
+</footer>
+
+<style>
+  .ftr { background: var(--accent-dark); color: rgba(250, 247, 242, 0.82); padding: 72px 0 0; font-size: 0.95rem; }
+  .ftr a:not(.btn) { color: var(--ivory); }
+  .ftr__grid { display: grid; gap: 40px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); padding-bottom: 56px; }
+  .ftr__name { font-family: var(--serif); font-size: 1.7rem; color: var(--ivory); margin: 0; }
+  .ftr__sub { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
+  .ftr__note { max-width: 280px; }
+  .ftr__h { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  .ftr address { font-style: normal; margin-bottom: 1rem; }
+  .ftr ul { list-style: none; padding: 0; }
+  .ftr li { margin-bottom: 0.5rem; }
+  .ftr__small { font-size: 0.8rem; opacity: 0.7; }
+  .ftr__bottom {
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
+    border-top: 1px solid rgba(250, 247, 242, 0.14); padding-top: 20px; padding-bottom: 96px;
+    font-size: 0.8rem; opacity: 0.75;
+  }
+  @media (min-width: 768px) { .ftr__bottom { padding-bottom: 28px; } }
+</style>

@@ -1,0 +1,29 @@
+---
+import Service from '../../layouts/Service.astro';
+
+const faq = [
+  { q: 'Is respiratory physiotherapy reimbursed?', a: 'Yes, with a medical prescription, under the same conditions as other physiotherapy treatment.' },
+  { q: 'Do you treat babies (bronchiolitis)?', a: 'The practice focuses on adults and teenagers. For infants, please contact your paediatrician or a specialised paediatric physiotherapy network.' },
+];
+---
+<Service
+  lang="en"
+  title="Respiratory Physiotherapy Paris 16 – Airway Clearance, Exercise Retraining"
+  description="Respiratory and cardiovascular physiotherapy for adults in Paris 16th, in English: airway clearance, COPD, breathlessness, exercise retraining after illness or surgery."
+  eyebrow="Respiratory & cardiovascular · Paris 16th"
+  h1="Respiratory and cardiovascular physiotherapy in Paris 16th"
+  lead="Airway clearance, managing breathlessness, exercise retraining: regain the breath and stamina you need for everyday life."
+  crumb="Respiratory physiotherapy"
+  faq={faq}
+>
+  <h2>Who is it for?</h2>
+  <ul>
+    <li>Adults with <strong>chest congestion</strong> during bronchitis or a chronic condition;</li>
+    <li><strong>COPD</strong>, asthma and other chronic respiratory conditions;</li>
+    <li>Persistent <strong>breathlessness</strong> after a respiratory infection or hospital stay;</li>
+    <li><strong>Deconditioning</strong> after surgery, illness or a long period of inactivity.</li>
+  </ul>
+  <h2>What treatment includes</h2>
+  <p><strong>Airway clearance techniques</strong>, which you learn to perform on your own; <strong>breathing retraining</strong> and chest mobility; and a <strong>progressive exercise programme</strong> adapted to your tolerance and your doctor’s advice.</p>
+  <p class="note">Respiratory physiotherapy does not replace medical follow-up. In case of acute breathing difficulty, chest pain or high fever, call your doctor or dial 15.</p>
+</Service>

@@ -1,0 +1,162 @@
+---
+import Base from '../layouts/Base.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import MapEmbed from '../components/MapEmbed.astro';
+import { site, services } from '../data/site';
+
+const faq = [
+  {
+    q: 'Faut-il une ordonnance pour consulter ?',
+    a: 'Pour que vos séances soient remboursées par l’Assurance Maladie, une prescription médicale est en principe nécessaire (médecin traitant, chirurgien, médecin du sport…). Apportez-la dès la première séance, avec votre carte Vitale et vos éventuels examens (IRM, radiographies, compte rendu opératoire).',
+  },
+  {
+    q: 'Le cabinet prend-il de nouveaux patients ?',
+    a: `Oui. Les disponibilités sont à jour en temps réel sur <a href="${site.doctolib}" target="_blank" rel="noopener">Doctolib</a>. Vous pouvez aussi appeler le <a href="tel:${site.phone}">${site.phoneDisplay}</a>.`,
+  },
+  {
+    q: 'Quels sont les tarifs ?',
+    a: `La première séance (bilan) est à ${site.prices.first} € et les séances suivantes à ${site.prices.session} €. Le cabinet est conventionné avec dépassements d’honoraires : la part Sécurité sociale est remboursée, le dépassement peut être pris en charge par votre mutuelle. <a href="/tarifs-remboursement/">Détail des tarifs</a>.`,
+  },
+  {
+    q: 'Où se trouve le cabinet ?',
+    a: `Au ${site.address.street}, 75016 Paris, quartier de la Muette, à environ 3 minutes à pied du métro Ranelagh (ligne 9) et à quelques minutes de La Muette et du RER C Boulainvilliers. Le cabinet est en rez-de-chaussée. <a href="/cabinet-acces/">Plan et accès</a>.`,
+  },
+  {
+    q: 'Parlez-vous anglais ?',
+    a: 'Oui, les séances peuvent se dérouler entièrement en anglais. <a href="/en/" lang="en">English version of the website</a>.',
+  },
+];
+---
+<Base
+  title="Kinésithérapeute Paris 16 – Anastasia Mischenko | Sport, post-op, dos"
+  description="Anastasia Mischenko, kinésithérapeute D.E. à Paris 16e (51 bd de Beauséjour, métro Ranelagh). Kiné du sport, rééducation post-opératoire, mal de dos. Rendez-vous sur Doctolib."
+>
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div>
+        <span class="eyebrow">Masseur-Kinésithérapeute D.E. · Paris 16e</span>
+        <h1>Kinésithérapie du sport &amp; rééducation, <em>au cœur du 16e</em></h1>
+        <hr class="rule" />
+        <p class="lead">
+          Anastasia Mischenko vous accueille dans son cabinet du boulevard de Beauséjour pour une rééducation
+          précise et personnalisée : blessures sportives, suites de chirurgie orthopédique, douleurs de dos.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href={site.doctolib} target="_blank" rel="noopener">Prendre rendez-vous</a>
+          <a class="btn btn--ghost" href={`tel:${site.phone}`}>{site.phoneDisplay}</a>
+        </div>
+      </div>
+      <aside class="infos" aria-label="Informations pratiques">
+        <p class="infos__h">Le cabinet</p>
+        <dl>
+          <div><dt>Adresse</dt><dd>{site.address.street}<br />75016 Paris</dd></div>
+          <div><dt>Accès</dt><dd>Métro Ranelagh (9) · La Muette (9)<br />RER C Boulainvilliers</dd></div>
+          <div><dt>Conventionnement</dt><dd>Conventionnée · Carte Vitale acceptée</dd></div>
+          <div><dt>Langues</dt><dd>Français · English</dd></div>
+        </dl>
+        <a href="/cabinet-acces/" class="infos__link">Plan et accès →</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow">Les soins</span>
+      <h2>Une rééducation adaptée à chaque situation</h2>
+      <p class="lead">Chaque prise en charge commence par un bilan complet pour comprendre l’origine de la douleur ou de la limitation, fixer des objectifs avec vous et construire un programme sur mesure.</p>
+      <div class="grid grid--3" style="margin-top:2.5rem">
+        {services.fr.map((s, i) => (
+          <a class="card svc" href={s.href}>
+            <span class="svc__n">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{s.label}</h3>
+            <p>{s.short}</p>
+            <span class="more">Découvrir →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="wrap grid grid--2 approach">
+      <div>
+        <span class="eyebrow">L’approche</span>
+        <h2>Comprendre, soulager, puis rendre autonome</h2>
+      </div>
+      <div>
+        <ol class="steps">
+          <li><strong>Le bilan.</strong> Entretien, examen clinique et tests fonctionnels pour poser un diagnostic kinésithérapique précis et lire vos examens médicaux.</li>
+          <li><strong>Le traitement.</strong> Thérapie manuelle, exercices actifs, renforcement progressif : des techniques choisies selon votre pathologie et votre niveau.</li>
+          <li><strong>L’autonomie.</strong> Des exercices simples à faire chez vous, et des conseils concrets pour reprendre le sport ou le travail en confiance et éviter la récidive.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap grid grid--2 about">
+      <div class="monogram" aria-hidden="true">AM</div>
+      <div>
+        <span class="eyebrow">Votre kinésithérapeute</span>
+        <h2>Anastasia Mischenko</h2>
+        <p>Diplômée d’État de l’IFMK Saint-Michel à Paris, Anastasia Mischenko a exercé en milieu hospitalier, notamment de 2023 à 2025 dans le service d’orthopédie de l’hôpital Ambroise-Paré à Boulogne-Billancourt.</p>
+        <p>Cette expérience de la rééducation post-opératoire (genou, épaule, hanche) et de la traumatologie fonde aujourd’hui sa pratique en cabinet, orientée vers le sport et la récupération fonctionnelle.</p>
+        <a href="/a-propos/" class="btn btn--ghost" style="margin-top:1rem">Son parcours</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="wrap grid grid--2 loc">
+      <div>
+        <span class="eyebrow">Accès</span>
+        <h2>Un cabinet entre Ranelagh et La Muette</h2>
+        <p>Le cabinet est situé au <strong>{site.address.street}, 75016 Paris</strong>, en rez-de-chaussée, à deux pas du jardin du Ranelagh.</p>
+        <ul>
+          <li>Métro <strong>Ranelagh</strong> (ligne 9) : environ 3 min à pied</li>
+          <li>Métro <strong>La Muette</strong> (ligne 9) : environ 7 min à pied</li>
+          <li>RER C <strong>Boulainvilliers</strong> : environ 8 min à pied</li>
+        </ul>
+        <p>Il accueille les patients de tout le 16e arrondissement (Passy, La Muette, Ranelagh, Auteuil) et des communes voisines comme Boulogne-Billancourt et Neuilly-sur-Seine.</p>
+        <a class="btn btn--ghost" href={site.mapsUrl} target="_blank" rel="noopener">Itinéraire</a>
+      </div>
+      <MapEmbed title="Plan d'accès au cabinet de kinésithérapie, 51 boulevard de Beauséjour, Paris 16e" />
+    </div>
+  </section>
+
+  <Faq items={faq} />
+  <CtaBand />
+</Base>
+
+<style>
+  .hero { padding: clamp(48px, 8vw, 112px) 0; border-bottom: 1px solid var(--stone); }
+  .hero__grid { display: grid; gap: 48px; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); align-items: center; }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .infos { background: var(--white); border: 1px solid var(--stone); padding: 32px; border-radius: var(--radius); }
+  .infos__h { font-family: var(--serif); font-size: 1.6rem; margin-bottom: 1rem; }
+  .infos dl { margin: 0; }
+  .infos dl > div { padding: 0.8rem 0; border-top: 1px solid var(--stone); }
+  .infos dt { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+  .infos dd { margin: 0.2rem 0 0; font-size: 0.95rem; }
+  .infos__link { display: inline-block; margin-top: 1rem; font-size: 0.9rem; }
+  @media (max-width: 900px) { .hero__grid { grid-template-columns: 1fr; } }
+
+  .svc__n { font-family: var(--serif); font-size: 1rem; color: var(--gold); display: block; margin-bottom: 1.2rem; }
+
+  .approach { align-items: start; }
+  .steps { list-style: none; padding: 0; counter-reset: s; }
+  .steps li { counter-increment: s; position: relative; padding: 0 0 1.6rem 3.5rem; margin: 0; color: var(--ink-soft); }
+  .steps li::before { content: counter(s, decimal-leading-zero); position: absolute; left: 0; top: -0.2rem; font-family: var(--serif); font-size: 1.8rem; color: var(--gold); }
+  .steps strong { color: var(--ink); font-weight: 500; }
+
+  .about { align-items: center; }
+  .monogram {
+    aspect-ratio: 4 / 5; max-width: 420px; width: 100%;
+    display: grid; place-items: center;
+    background: linear-gradient(160deg, var(--sand), var(--stone));
+    font-family: var(--serif); font-size: clamp(5rem, 14vw, 9rem); color: var(--accent); font-style: italic;
+    border-radius: var(--radius);
+  }
+  .loc { align-items: center; }
+</style>

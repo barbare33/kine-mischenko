@@ -1,0 +1,66 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { site } from '../data/site';
+
+const crumbs = [
+  { name: 'Accueil', href: '/' },
+  { name: 'Tarifs & remboursement', href: '/tarifs-remboursement/' },
+];
+
+const faq = [
+  { q: 'Combien suis-je remboursé ?', a: 'L’Assurance Maladie rembourse une partie du tarif conventionnel de la séance, sur prescription médicale. Le reste, ainsi que le dépassement d’honoraires, peut être pris en charge par votre complémentaire santé selon votre contrat. N’hésitez pas à demander un devis à votre mutuelle.' },
+  { q: 'Qu’est-ce qu’un dépassement d’honoraires ?', a: 'C’est la part du tarif qui dépasse le tarif conventionnel fixé par l’Assurance Maladie. Elle n’est pas remboursée par la Sécurité sociale mais peut l’être par votre mutuelle. Les tarifs du cabinet sont toujours affichés à l’avance.' },
+  { q: 'Puis-je payer par carte bancaire ?', a: 'Non, la carte bancaire n’est pas acceptée. Vous pouvez régler par chèque, en espèces ou par virement bancaire.' },
+  { q: 'Comment annuler ou déplacer un rendez-vous ?', a: 'Directement sur Doctolib ou par téléphone, le plus tôt possible, afin que le créneau puisse être proposé à un autre patient.' },
+];
+---
+<Base
+  title="Tarifs kiné Paris 16 – Remboursement, carte Vitale | Cabinet Mischenko"
+  description={`Tarifs du cabinet de kinésithérapie d’Anastasia Mischenko à Paris 16e : première séance ${site.prices.first} €, séance ${site.prices.session} €. Conventionnée, carte Vitale acceptée.`}
+  crumbs={crumbs}
+>
+  <PageHero
+    eyebrow="Tarifs & remboursement"
+    title="Tarifs et remboursement"
+    lead="Des tarifs clairs, affichés à l’avance. Le cabinet est conventionné avec dépassements d’honoraires et accepte la carte Vitale."
+  />
+
+  <section class="section">
+    <div class="wrap narrow prose">
+      <h2>Séances de kinésithérapie</h2>
+      <table class="table">
+        <tbody>
+          <tr><th scope="row">Première séance (bilan et début du traitement)</th><td>{site.prices.first} €</td></tr>
+          <tr><th scope="row">Séance de kinésithérapie</th><td>{site.prices.session} €</td></tr>
+          <tr><th scope="row">Remise en forme (hors nomenclature, non remboursée)</th><td>Sur demande</td></tr>
+        </tbody>
+      </table>
+      <p>Tarifs avec dépassement d’honoraires, en vigueur au moment de la publication. Les tarifs à jour sont également indiqués sur <a href={site.doctolib} target="_blank" rel="noopener">Doctolib</a>.</p>
+
+      <h2>Remboursement</h2>
+      <ul>
+        <li><strong>Conventionnée</strong> avec l’Assurance Maladie ;</li>
+        <li><strong>Carte Vitale</strong> acceptée ;</li>
+        <li>Remboursement de la part Sécurité sociale sur <strong>prescription médicale</strong> ;</li>
+        <li>Dépassement d’honoraires pris en charge selon votre <strong>mutuelle</strong>.</li>
+      </ul>
+
+      <h2>Moyens de paiement</h2>
+      <p>Chèque, espèces ou virement bancaire. <strong>Les cartes bancaires ne sont pas acceptées.</strong></p>
+
+      <h2>À apporter à la première séance</h2>
+      <ul>
+        <li>L’ordonnance de kinésithérapie ;</li>
+        <li>Votre carte Vitale et votre attestation de mutuelle ;</li>
+        <li>Vos examens : radiographies, IRM, échographie, compte rendu opératoire ;</li>
+        <li>Une tenue confortable (short, t-shirt).</li>
+      </ul>
+    </div>
+  </section>
+
+  <Faq items={faq} />
+  <CtaBand />
+</Base>

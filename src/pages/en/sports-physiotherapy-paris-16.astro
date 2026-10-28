@@ -1,0 +1,38 @@
+---
+import Service from '../../layouts/Service.astro';
+
+const faq = [
+  { q: 'When should I see a physio after a sports injury?', a: 'As early as possible after medical advice. Early rehabilitation limits loss of strength and mobility; exercises are adapted to the healing stage.' },
+  { q: 'Do I have to stop training completely?', a: 'Rarely. Complete rest is often counter-productive. The aim is to adjust your training load and gradually reintroduce what you cannot do yet.' },
+  { q: 'Do you treat recreational athletes?', a: 'Yes — from weekend runners to competitive athletes: running, tennis, padel, football, skiing, combat sports, dance, CrossFit and more.' },
+];
+---
+<Service
+  lang="en"
+  title="Sports Physiotherapist Paris 16 (English spoken) | Anastasia Mischenko"
+  description="English-speaking sports physiotherapist in Paris 16th: sprains, tendinopathies, muscle tears, return to sport. Personalised assessment and rehabilitation near Ranelagh metro."
+  eyebrow="Sports physiotherapy · Paris 16th"
+  h1="Sports physiotherapy in Paris 16th"
+  lead="Sprain, tendinopathy, muscle tear or nagging pain: targeted rehabilitation to recover efficiently and return to your sport safely, without re-injury."
+  crumb="Sports physiotherapy"
+  faq={faq}
+>
+  <h2>Conditions treated</h2>
+  <ul>
+    <li><strong>Ankle and knee sprains</strong>, chronic instability;</li>
+    <li><strong>Tendinopathies</strong>: Achilles, patellar, rotator cuff, tennis elbow;</li>
+    <li><strong>Muscle injuries</strong>: tears and strains (hamstrings, calves, adductors);</li>
+    <li><strong>Running injuries</strong>: ITB syndrome, patellofemoral pain, shin splints;</li>
+    <li><strong>Groin and hip pain</strong> related to sport;</li>
+    <li><strong>Shoulder instability</strong> in throwing, racket and contact sports.</li>
+  </ul>
+
+  <h2>How rehabilitation works</h2>
+  <p><strong>Assessment.</strong> History of the injury, clinical examination, strength and mobility tests, and movement analysis where relevant. Please bring your prescription and any imaging.</p>
+  <p><strong>Settle and protect.</strong> Pain and swelling management while maintaining mobility: manual therapy, adapted active exercise and load-management advice.</p>
+  <p><strong>Progressive strengthening.</strong> Strength, proprioception, balance and coordination, gradually reproducing the demands of your sport.</p>
+  <p><strong>Return to play.</strong> Guided by objective criteria (strength, range of motion, functional tests) rather than the calendar alone, with a prevention programme to take home.</p>
+
+  <h2>After sports surgery</h2>
+  <p>ACL reconstruction, rotator cuff repair, shoulder stabilisation: with experience in a hospital orthopaedic department, Anastasia provides <a href="/en/post-surgery-rehabilitation-paris-16/">post-operative rehabilitation</a> in line with your surgeon’s protocol.</p>
+</Service>

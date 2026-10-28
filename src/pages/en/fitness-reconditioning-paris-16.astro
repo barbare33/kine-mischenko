@@ -1,0 +1,30 @@
+---
+import Service from '../../layouts/Service.astro';
+
+const faq = [
+  { q: 'Are these sessions reimbursed?', a: 'No. They are private sessions outside the French health insurance scheme, with no prescription required. Some insurance policies cover prevention or wellness services — check with yours.' },
+  { q: 'How is this different from a personal trainer?', a: 'Sessions are supervised by a state-registered physiotherapist who understands injuries and medical conditions — particularly useful if you have a history of injury or recurring pain.' },
+];
+---
+<Service
+  lang="en"
+  title="Fitness & Reconditioning with a Physiotherapist – Paris 16 (English)"
+  description="Private strength and conditioning sessions with an English-speaking physiotherapist in Paris 16th: return to exercise, sports preparation, injury prevention."
+  eyebrow="Fitness & reconditioning · Private sessions"
+  h1="Fitness and reconditioning with a physiotherapist"
+  lead="Getting back into exercise, preparing for a sporting goal or building on a completed rehab programme: personalised sessions supervised by a health professional."
+  crumb="Fitness & reconditioning"
+  faq={faq}
+>
+  <h2>Who is it for?</h2>
+  <ul>
+    <li>People returning to exercise after a long break;</li>
+    <li>Patients finishing rehabilitation who want to keep building strength;</li>
+    <li>Athletes preparing for an event: half-marathon, ski season, tournament;</li>
+    <li>Anyone wanting to prevent recurring back, knee or shoulder pain.</li>
+  </ul>
+  <h2>Session content</h2>
+  <p>After an initial discussion of your fitness, history and goals, a tailored programme combines strength training, mobility, balance and core work, and adapted cardiovascular exercise.</p>
+  <h2>Fees</h2>
+  <p>These sessions are <strong>not reimbursed</strong> by the French health insurance. Fees are provided on request before any session — please <a href="tel:+33766734393">call the practice</a>.</p>
+</Service>

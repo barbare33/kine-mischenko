@@ -1,0 +1,25 @@
+---
+import Base from '../../layouts/Base.astro';
+import { site } from '../../data/site';
+---
+<Base
+  lang="en"
+  title="Legal Notice – Anastasia Mischenko, Physiotherapist"
+  description="Legal notice and privacy information for the website of Anastasia Mischenko, physiotherapist in Paris 16th."
+  crumbs={[{ name: 'Home', href: '/en/' }, { name: 'Legal notice', href: '/en/legal-notice/' }]}
+  noindex
+>
+  <section class="section">
+    <div class="wrap narrow prose">
+      <h1>Legal notice</h1>
+      <h2>Publisher</h2>
+      <p>{site.name}, state-registered physiotherapist<br />{site.address.street}, {site.address.postalCode} {site.address.city}, France<br />Phone: <a href={`tel:${site.phone}`}>{site.phoneDisplayIntl}</a><br />RPPS no.: {site.rpps}</p>
+      <h2>Hosting</h2>
+      <p>Cloudflare, Inc. — 101 Townsend St, San Francisco, CA 94107, USA.</p>
+      <h2>Privacy</h2>
+      <p>This website has no forms, collects no personal data and sets no analytics or advertising cookies. Appointments are handled by Doctolib, which is responsible for the data you provide to it. The map is provided by OpenStreetMap without cookies.</p>
+      <p>The information on this site is for general purposes only and does not replace medical advice. In an emergency, dial 15 (or 112).</p>
+      <p>The French version of the <a href="/mentions-legales/">legal notice</a> prevails.</p>
+    </div>
+  </section>
+</Base>

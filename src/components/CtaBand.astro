@@ -1,0 +1,27 @@
+---
+import { site, ui, type Lang } from '../data/site';
+
+interface Props { lang?: Lang; title?: string; text?: string }
+const { lang = 'fr', title, text } = Astro.props;
+const fr = lang === 'fr';
+---
+<section class="section section--ink cta">
+  <div class="wrap">
+    <h2>{title ?? (fr ? 'Prendre rendez-vous au cabinet' : 'Book an appointment')}</h2>
+    <p>{text ?? (fr
+      ? `${site.address.street}, ${site.address.postalCode} Paris — à 3 minutes du métro Ranelagh. Réservation en ligne sur Doctolib ou par téléphone.`
+      : `${site.address.street}, ${site.address.postalCode} Paris — 3 minutes from Ranelagh metro. Book online via Doctolib or by phone. English spoken.`)}</p>
+    <div class="btn-row">
+      <a class="btn btn--light" href={site.doctolib} target="_blank" rel="noopener">{ui[lang].book}</a>
+      <a class="btn btn--ghost" href={`tel:${site.phone}`}>{fr ? site.phoneDisplay : site.phoneDisplayIntl}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta { text-align: center; }
+  .cta p { max-width: 620px; margin: 0 auto; opacity: 0.85; }
+  .cta .btn-row { justify-content: center; }
+  .cta .btn--ghost { border-color: var(--ivory); color: var(--ivory); }
+  .cta .btn--ghost:hover { background: var(--ivory); color: var(--accent); }
+</style>

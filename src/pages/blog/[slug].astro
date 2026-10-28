@@ -1,0 +1,66 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { site } from '../../data/site';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', (p) => !p.data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const fmt = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long' });
+const url = `${site.url}/blog/${post.id}/`;
+
+const article = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.date.toISOString(),
+  dateModified: (post.data.updated ?? post.data.date).toISOString(),
+  inLanguage: 'fr',
+  mainEntityOfPage: url,
+  author: { '@id': `${site.url}/#anastasia` },
+  publisher: { '@id': `${site.url}/#cabinet` },
+};
+---
+<Base
+  title={`${post.data.title} | Kiné Paris 16`}
+  description={post.data.description}
+  ogType="article"
+  crumbs={[
+    { name: 'Accueil', href: '/' },
+    { name: 'Conseils', href: '/blog/' },
+    { name: post.data.title, href: `/blog/${post.id}/` },
+  ]}
+  schema={[article]}
+>
+  <article class="section">
+    <div class="wrap narrow">
+      <span class="eyebrow">Conseils · {fmt.format(post.data.date)}</span>
+      <h1 style="font-size:clamp(2.2rem,4.5vw,3.2rem)">{post.data.title}</h1>
+      <hr class="rule" />
+      <p class="lead">{post.data.description}</p>
+      <div class="prose" style="margin-top:2.5rem">
+        <Content />
+      </div>
+      {post.data.related && (
+        <p class="related">
+          <a class="btn btn--ghost" href={post.data.related}>{post.data.relatedLabel ?? 'Voir le soin associé'}</a>
+        </p>
+      )}
+      <p class="note">
+        Article rédigé par {site.name}, masseur-kinésithérapeute D.E. à Paris 16e. Ces informations sont générales
+        et ne remplacent pas l’avis de votre médecin ou un bilan personnalisé.
+      </p>
+    </div>
+  </article>
+  <CtaBand />
+</Base>
+
+<style>
+  .related { margin-top: 2rem; }
+</style>

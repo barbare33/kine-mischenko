@@ -1,0 +1,33 @@
+---
+import Service from '../../layouts/Service.astro';
+
+const faq = [
+  { q: 'Do I need an MRI before treatment for back pain?', a: 'Not necessarily. For most common low back pain, imaging is not needed; your doctor decides whether it is useful. Bring any existing scans to your first session.' },
+  { q: 'Should I rest when my back hurts?', a: 'Current guidelines recommend staying active within the limits of pain. Your physiotherapist helps you find the right level of activity.' },
+  { q: 'When should I seek urgent medical care?', a: 'If you have leg weakness, bladder or bowel problems, numbness in the saddle area, fever, or after significant trauma, see a doctor or go to A&E immediately (dial 15 in France).' },
+];
+---
+<Service
+  lang="en"
+  title="Back Pain Physiotherapy Paris 16 – Manual Therapy (English spoken)"
+  description="English-speaking physiotherapist in Paris 16th for low back pain, sciatica, neck pain and postural pain. Manual therapy combined with personalised exercise."
+  eyebrow="Back pain & manual therapy · Paris 16th"
+  h1="Back pain and manual therapy in Paris 16th"
+  lead="Low back pain, sciatica, neck or upper-back pain: treatment combining manual therapy and exercise to relieve pain and keep it from coming back."
+  crumb="Back pain & manual therapy"
+  faq={faq}
+>
+  <h2>Conditions treated</h2>
+  <ul>
+    <li>Acute or chronic <strong>low back pain</strong>;</li>
+    <li><strong>Sciatica</strong>, disc herniation;</li>
+    <li><strong>Neck pain</strong>, stiff neck, cervical radiculopathy;</li>
+    <li>Upper-back and <strong>postural pain</strong> from desk work;</li>
+    <li>Rehabilitation after spinal surgery.</li>
+  </ul>
+
+  <h2>An active approach</h2>
+  <p><strong>Manual therapy</strong> — joint mobilisation, soft-tissue techniques and stretching — reduces pain and restores mobility, making it easier to move again.</p>
+  <p><strong>Exercise</strong> — trunk and lower-limb strengthening, mobility work, retraining everyday movements — delivers lasting results. You leave with a short programme to do at home.</p>
+  <p><strong>Education</strong> — understanding your pain reduces fear of movement. Advice is tailored to your workstation, your sport and your lifestyle.</p>
+</Service>

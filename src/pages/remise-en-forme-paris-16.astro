@@ -1,0 +1,40 @@
+---
+import Service from '../layouts/Service.astro';
+
+const faq = [
+  { q: 'Les séances de remise en forme sont-elles remboursées ?', a: 'Non. Il s’agit de séances hors nomenclature, sans prescription médicale, qui ne sont pas prises en charge par l’Assurance Maladie. Certaines mutuelles proposent toutefois des forfaits « prévention » ou « médecines douces » : renseignez-vous auprès de la vôtre.' },
+  { q: 'Quelle différence avec un coach sportif ?', a: 'Les séances sont encadrées par une kinésithérapeute diplômée d’État, qui connaît les pathologies et les blessures. C’est particulièrement utile si vous avez des antécédents de blessure, des douleurs récurrentes ou si vous sortez d’une rééducation.' },
+  { q: 'Comment réserver une séance de remise en forme ?', a: 'Contactez directement le cabinet par téléphone pour définir vos objectifs et convenir d’un créneau.' },
+];
+---
+<Service
+  title="Remise en forme avec une kiné Paris 16 – Préparation physique, renforcement"
+  description="Séances de remise en forme encadrées par une kinésithérapeute à Paris 16e : renforcement musculaire, préparation physique, reprise du sport, prévention des blessures. Hors nomenclature."
+  eyebrow="Remise en forme · Hors nomenclature"
+  h1="Remise en forme encadrée par une kinésithérapeute"
+  lead="Reprendre une activité physique, se préparer pour une saison sportive ou consolider une rééducation terminée : des séances personnalisées, encadrées par une professionnelle de santé."
+  crumb="Remise en forme"
+  faq={faq}
+>
+  <h2>À qui s’adressent ces séances ?</h2>
+  <ul>
+    <li>Aux personnes qui souhaitent <strong>reprendre le sport</strong> en toute sécurité après une longue pause ;</li>
+    <li>Aux patients qui <strong>terminent une rééducation</strong> et veulent poursuivre le renforcement ;</li>
+    <li>Aux sportifs qui préparent un objectif : semi-marathon, saison de ski, tournoi ;</li>
+    <li>À ceux qui veulent <strong>prévenir les blessures</strong> et les douleurs récurrentes (dos, genoux, épaules).</li>
+  </ul>
+
+  <h2>Le contenu des séances</h2>
+  <p>Après un premier entretien pour évaluer votre condition physique, vos antécédents et vos objectifs, un programme sur mesure est construit :</p>
+  <ul>
+    <li>renforcement musculaire global et ciblé ;</li>
+    <li>mobilité et souplesse ;</li>
+    <li>proprioception, équilibre et gainage ;</li>
+    <li>travail cardio-respiratoire adapté.</li>
+  </ul>
+  <p>Le programme évolue au fil des séances, et vous repartez avec des exercices à réaliser en autonomie.</p>
+
+  <h2>Tarif et conditions</h2>
+  <p>Ces séances sont <strong>hors nomenclature</strong> : elles ne nécessitent pas d’ordonnance et ne sont <strong>pas remboursées</strong> par l’Assurance Maladie. Le tarif vous est communiqué sur demande, avant toute séance. Pour en savoir plus ou réserver, <a href="tel:+33766734393">appelez le cabinet</a>.</p>
+  <p class="note">Ces séances ne se substituent pas à une rééducation prescrite. En cas de douleur ou de blessure, un bilan de <a href="/kine-du-sport-paris-16/">kinésithérapie du sport</a> est d’abord recommandé.</p>
+</Service>

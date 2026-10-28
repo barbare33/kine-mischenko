@@ -1,0 +1,21 @@
+---
+import { services, ui, type Lang } from '../data/site';
+
+interface Props { lang?: Lang; current: string }
+const { lang = 'fr', current } = Astro.props;
+const list = services[lang].filter((s) => s.href !== current);
+---
+<section class="section">
+  <div class="wrap">
+    <h2>{ui[lang].otherCare}</h2>
+    <div class="grid grid--2" style="margin-top:2rem">
+      {list.map((s) => (
+        <a class="card" href={s.href}>
+          <h3>{s.label}</h3>
+          <p>{s.short}</p>
+          <span class="more">{lang === 'fr' ? 'En savoir plus →' : 'Learn more →'}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

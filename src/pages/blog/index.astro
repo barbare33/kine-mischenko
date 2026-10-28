@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import CtaBand from '../../components/CtaBand.astro';
+
+const posts = (await getCollection('blog', (p) => !p.data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+const fmt = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long' });
+---
+<Base
+  title="Conseils de kiné – Blessures, rééducation, mal de dos | Kiné Paris 16"
+  description="Articles et conseils d’Anastasia Mischenko, kinésithérapeute à Paris 16e : blessures sportives, rééducation après chirurgie, lombalgie, reprise du sport."
+  crumbs={[{ name: 'Accueil', href: '/' }, { name: 'Conseils', href: '/blog/' }]}
+>
+  <PageHero
+    eyebrow="Conseils"
+    title="Conseils de kinésithérapeute"
+    lead="Comprendre sa blessure, savoir quand consulter, bien préparer sa reprise : des articles pratiques pour être acteur de sa rééducation."
+    showCta={false}
+  />
+  <section class="section">
+    <div class="wrap grid grid--2">
+      {posts.map((p) => (
+        <a class="card" href={`/blog/${p.id}/`}>
+          <span class="eyebrow" style="margin-bottom:0.6rem">{fmt.format(p.data.date)}</span>
+          <h2 style="font-size:1.7rem">{p.data.title}</h2>
+          <p>{p.data.description}</p>
+          <span class="more">Lire l’article →</span>
+        </a>
+      ))}
+    </div>
+  </section>
+  <CtaBand />
+</Base>

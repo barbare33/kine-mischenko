@@ -1,0 +1,37 @@
+---
+import Service from '../layouts/Service.astro';
+
+const faq = [
+  { q: 'La kinésithérapie respiratoire est-elle remboursée ?', a: 'Oui, sur prescription médicale, dans les mêmes conditions que les autres actes de kinésithérapie conventionnés.' },
+  { q: 'Prenez-vous en charge les nourrissons (bronchiolite) ?', a: 'Le cabinet est orienté vers la prise en charge des adultes et des adolescents. Pour un nourrisson, rapprochez-vous de votre pédiatre ou d’un réseau de kinésithérapie pédiatrique.' },
+  { q: 'Je suis essoufflé depuis une infection respiratoire, la kiné peut-elle m’aider ?', a: 'Après avis médical, un réentraînement progressif à l’effort et un travail respiratoire peuvent aider à retrouver de l’endurance. La prise en charge est adaptée à votre tolérance, séance après séance.' },
+];
+---
+<Service
+  title="Kiné respiratoire Paris 16 – Désencombrement, réentraînement à l’effort"
+  description="Kinésithérapie respiratoire et cardio-vasculaire à Paris 16e pour adultes : désencombrement bronchique, BPCO, essoufflement, réentraînement à l’effort après maladie ou chirurgie."
+  eyebrow="Kiné respiratoire & cardio-vasculaire · Paris 16e"
+  h1="Kinésithérapie respiratoire et cardio-vasculaire à Paris 16"
+  lead="Désencombrement, gestion de l’essoufflement, réentraînement à l’effort : retrouver un souffle et une endurance qui vous permettent de vivre normalement."
+  crumb="Kiné respiratoire"
+  faq={faq}
+>
+  <h2>Pour qui ?</h2>
+  <p>La kinésithérapie respiratoire s’adresse aux adultes et adolescents qui présentent, sur prescription médicale :</p>
+  <ul>
+    <li>un <strong>encombrement bronchique</strong> lors d’une bronchite ou d’une pathologie chronique ;</li>
+    <li>une <strong>BPCO</strong>, un asthme ou une autre maladie respiratoire chronique ;</li>
+    <li>un <strong>essoufflement</strong> persistant après une infection respiratoire ou une hospitalisation ;</li>
+    <li>un <strong>déconditionnement à l’effort</strong> après une chirurgie, une maladie ou une longue période d’inactivité.</li>
+  </ul>
+
+  <h2>Ce que comprend la prise en charge</h2>
+  <h3>Techniques de désencombrement</h3>
+  <p>Des techniques de modulation du flux expiratoire aident à mobiliser et évacuer les sécrétions. Vous apprenez à les réaliser seul pour gagner en autonomie.</p>
+  <h3>Rééducation du souffle</h3>
+  <p>Contrôle ventilatoire, travail de la mobilité du thorax, gestion de l’essoufflement dans les activités du quotidien.</p>
+  <h3>Réentraînement à l’effort</h3>
+  <p>Un programme progressif d’exercices d’endurance et de renforcement, dosé selon votre tolérance et les indications de votre médecin, pour améliorer votre capacité à l’effort et votre qualité de vie.</p>
+
+  <p class="note">La kinésithérapie respiratoire ne remplace pas le suivi médical. En cas de difficulté respiratoire aiguë, de douleur thoracique ou de fièvre élevée, contactez votre médecin ou le 15.</p>
+</Service>

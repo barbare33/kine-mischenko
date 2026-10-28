@@ -1,0 +1,73 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { site } from '../data/site';
+
+const crumbs = [
+  { name: 'Accueil', href: '/' },
+  { name: 'À propos', href: '/a-propos/' },
+];
+
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  mainEntity: { '@id': 'https://kine-mischenko.fr/#anastasia' },
+};
+---
+<Base
+  title="Anastasia Mischenko – Kinésithérapeute D.E. à Paris 16 | Parcours"
+  description="Parcours d’Anastasia Mischenko, masseur-kinésithérapeute diplômée d’État (IFMK Saint-Michel), ancienne kiné du service d’orthopédie de l’hôpital Ambroise-Paré. Cabinet à Paris 16e."
+  crumbs={crumbs}
+  schema={[person]}
+>
+  <PageHero
+    eyebrow="À propos"
+    title="Anastasia Mischenko"
+    lead="Masseur-kinésithérapeute diplômée d’État, installée à Paris 16e. Une pratique fondée sur l’expérience hospitalière en orthopédie, tournée vers le sport et la récupération fonctionnelle."
+  />
+
+  <section class="section">
+    <div class="wrap grid grid--2 ab">
+      <div class="ab__mono" aria-hidden="true">AM</div>
+      <div class="prose">
+        <h2>Parcours</h2>
+        <ol class="timeline">
+          <li><span>2023 – 2025</span><p><strong>Hôpital Ambroise-Paré</strong>, Boulogne-Billancourt — service d’orthopédie.</p></li>
+          <li><span>2022 – 2025</span><p><strong>Exercice en cabinet libéral</strong> à Paris.</p></li>
+          <li><span>2022 – 2023</span><p><strong>Centre de gérontologie Les Abondances</strong>, Boulogne-Billancourt — rééducation.</p></li>
+          <li><span>2022</span><p><strong>Diplôme d’État de masseur-kinésithérapeute</strong> — IFMK Saint-Michel, Paris.</p></li>
+        </ol>
+
+        <h2>Sa pratique</h2>
+        <p>Au contact des équipes chirurgicales et des patients opérés, Anastasia a développé une connaissance précise de la rééducation post-opératoire et de la traumatologie. Elle a fait le choix d’une pratique en cabinet orientée vers le <a href="/kine-du-sport-paris-16/">sport</a>, la <a href="/reeducation-post-operatoire-paris-16/">rééducation post-opératoire</a> et le <a href="/mal-de-dos-therapie-manuelle-paris-16/">traitement des douleurs de dos</a>.</p>
+        <p>Sa conviction : une rééducation réussie repose sur un bilan rigoureux, des explications claires et un patient acteur de sa progression.</p>
+
+        <h2>Langues</h2>
+        <p>Les séances se déroulent en français ou en anglais.</p>
+
+        <p class="note">Masseur-kinésithérapeute D.E. · N° RPPS {site.rpps} · Inscrite au tableau de l’Ordre des masseurs-kinésithérapeutes.</p>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>
+
+<style>
+  .ab { align-items: start; }
+  .ab__mono {
+    position: sticky; top: 110px;
+    aspect-ratio: 4 / 5; max-width: 420px; width: 100%;
+    display: grid; place-items: center;
+    background: linear-gradient(160deg, var(--sand), var(--stone));
+    font-family: var(--serif); font-size: clamp(5rem, 14vw, 9rem); color: var(--accent); font-style: italic;
+    border-radius: var(--radius);
+  }
+  @media (max-width: 900px) { .ab__mono { position: static; max-width: 240px; } }
+  .timeline { list-style: none; padding: 0; border-left: 1px solid var(--stone); }
+  .timeline li { padding: 0 0 1.2rem 1.5rem; position: relative; margin: 0; }
+  .timeline li::before { content: ''; position: absolute; left: -4px; top: 0.6rem; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+  .timeline span { font-size: 0.75rem; letter-spacing: 0.14em; color: var(--gold); text-transform: uppercase; }
+  .timeline p { margin: 0.2rem 0 0; }
+</style>

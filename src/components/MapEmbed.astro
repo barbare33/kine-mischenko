@@ -1,0 +1,18 @@
+---
+import { site } from '../data/site';
+
+// Carte OpenStreetMap : aucun cookie déposé, pas de bandeau de consentement nécessaire.
+interface Props { title: string }
+const { title } = Astro.props;
+const d = 0.004;
+const bbox = [site.geo.lng - d, site.geo.lat - d / 2, site.geo.lng + d, site.geo.lat + d / 2].join(',');
+const src = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${site.geo.lat},${site.geo.lng}`;
+---
+<div class="map">
+  <iframe src={src} title={title} loading="lazy"></iframe>
+</div>
+
+<style>
+  .map { border: 1px solid var(--stone); border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 3; background: var(--sand); }
+  .map iframe { width: 100%; height: 100%; border: 0; filter: grayscale(0.6) sepia(0.15); }
+</style>

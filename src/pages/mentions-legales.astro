@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+<Base
+  title="Mentions légales – Anastasia Mischenko, kinésithérapeute"
+  description="Mentions légales et politique de confidentialité du site d’Anastasia Mischenko, masseur-kinésithérapeute à Paris 16e."
+  crumbs={[{ name: 'Accueil', href: '/' }, { name: 'Mentions légales', href: '/mentions-legales/' }]}
+  noindex
+>
+  <section class="section">
+    <div class="wrap narrow prose">
+      <h1>Mentions légales</h1>
+
+      <h2>Éditeur du site</h2>
+      <p>
+        {site.name}, masseur-kinésithérapeute diplômée d’État<br />
+        {site.address.street}, {site.address.postalCode} {site.address.city}<br />
+        Téléphone : <a href={`tel:${site.phone}`}>{site.phoneDisplay}</a><br />
+        N° RPPS : {site.rpps}<br />
+        Inscrite au tableau de l’Ordre des masseurs-kinésithérapeutes (Conseil départemental de Paris)<br />
+        Règles professionnelles : Code de la santé publique, articles R.4321-51 et suivants (code de déontologie des masseurs-kinésithérapeutes).<br />
+        Directrice de la publication : {site.name}
+      </p>
+
+      <h2>Hébergement</h2>
+      <p>Cloudflare, Inc. — 101 Townsend St, San Francisco, CA 94107, États-Unis — cloudflare.com</p>
+
+      <h2>Données personnelles</h2>
+      <p>Ce site est une vitrine d’information : il ne comporte aucun formulaire et ne collecte aucune donnée personnelle. Il ne dépose pas de cookies de mesure d’audience ni de publicité.</p>
+      <p>La prise de rendez-vous est assurée par Doctolib, qui est responsable des données que vous lui transmettez. Consultez la politique de confidentialité de Doctolib, disponible sur <a href="https://www.doctolib.fr" target="_blank" rel="noopener">doctolib.fr</a>.</p>
+      <p>La carte d’accès est fournie par OpenStreetMap, sans cookie.</p>
+
+      <h2>Contenu</h2>
+      <p>Les informations publiées sur ce site sont fournies à titre informatif et ne remplacent pas une consultation médicale. En cas d’urgence, composez le 15.</p>
+      <p>Crédits : polices Cormorant Garamond et Inter (licence SIL Open Font License), carte © contributeurs OpenStreetMap.</p>
+    </div>
+  </section>
+</Base>

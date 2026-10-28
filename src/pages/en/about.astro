@@ -1,0 +1,35 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { site } from '../../data/site';
+---
+<Base
+  lang="en"
+  title="About Anastasia Mischenko – English-Speaking Physiotherapist Paris"
+  description="Anastasia Mischenko, French state-registered physiotherapist (IFMK Saint-Michel), formerly in the orthopaedic department of Ambroise-Paré Hospital. Practice in Paris 16th."
+  crumbs={[{ name: 'Home', href: '/en/' }, { name: 'About', href: '/en/about/' }]}
+  schema={[{ '@context': 'https://schema.org', '@type': 'ProfilePage', mainEntity: { '@id': 'https://kine-mischenko.fr/#anastasia' } }]}
+>
+  <PageHero
+    lang="en"
+    eyebrow="About"
+    title="Anastasia Mischenko"
+    lead="French state-registered physiotherapist in Paris 16th, with hospital experience in orthopaedics and a practice focused on sport and functional recovery."
+  />
+  <section class="section">
+    <div class="wrap narrow prose">
+      <h2>Background</h2>
+      <ul>
+        <li><strong>2023 – 2025</strong> — Ambroise-Paré Hospital, Boulogne-Billancourt: orthopaedic department.</li>
+        <li><strong>2022 – 2025</strong> — Private practice in Paris.</li>
+        <li><strong>2022 – 2023</strong> — Les Abondances geriatric centre, Boulogne-Billancourt: rehabilitation.</li>
+        <li><strong>2022</strong> — French State Diploma in Physiotherapy (MKDE), IFMK Saint-Michel, Paris.</li>
+      </ul>
+      <h2>Approach</h2>
+      <p>Successful rehabilitation rests on a thorough assessment, clear explanations and a patient who is actively involved in their recovery. Sessions are held in English or French.</p>
+      <p class="note">State-registered physiotherapist · RPPS no. {site.rpps} · Registered with the French Order of Physiotherapists.</p>
+    </div>
+  </section>
+  <CtaBand lang="en" />
+</Base>

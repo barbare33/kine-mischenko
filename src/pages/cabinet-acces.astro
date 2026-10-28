@@ -1,0 +1,60 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import MapEmbed from '../components/MapEmbed.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { site } from '../data/site';
+
+const crumbs = [
+  { name: 'Accueil', href: '/' },
+  { name: 'Cabinet & accès', href: '/cabinet-acces/' },
+];
+---
+<Base
+  title="Cabinet de kinésithérapie 51 bd de Beauséjour, Paris 16 – Accès Ranelagh"
+  description="Le cabinet de kiné d’Anastasia Mischenko est au 51 boulevard de Beauséjour, 75016 Paris : métro Ranelagh (3 min), La Muette, RER C Boulainvilliers. Rez-de-chaussée."
+  crumbs={crumbs}
+>
+  <PageHero
+    eyebrow="Cabinet & accès"
+    title="Le cabinet, boulevard de Beauséjour"
+    lead="Un cabinet calme en rez-de-chaussée, entre le jardin du Ranelagh et La Muette, facilement accessible en métro et en RER."
+  />
+
+  <section class="section">
+    <div class="wrap grid grid--2">
+      <div class="prose">
+        <h2>Adresse</h2>
+        <p><strong>{site.address.street}<br />75016 Paris</strong><br />Quartier de la Muette, Paris 16e</p>
+        <p><a class="btn btn--ghost" href={site.mapsUrl} target="_blank" rel="noopener">Ouvrir l’itinéraire</a></p>
+
+        <h2>Transports</h2>
+        <ul>
+          <li><strong>Métro ligne 9 – Ranelagh</strong> : environ 3 minutes à pied</li>
+          <li><strong>Métro ligne 9 – La Muette</strong> : environ 7 minutes à pied</li>
+          <li><strong>RER C – Boulainvilliers</strong> : environ 8 minutes à pied</li>
+          <li><strong>Vélib’</strong> : plusieurs stations à proximité</li>
+        </ul>
+
+        <h2>Accessibilité</h2>
+        <p>Le cabinet est situé en <strong>rez-de-chaussée</strong>, ce qui facilite l’accès des patients en béquilles ou en convalescence après une opération.</p>
+
+        <h2>Rendez-vous</h2>
+        <p>Les rendez-vous se prennent en ligne sur <a href={site.doctolib} target="_blank" rel="noopener">Doctolib</a>, où les disponibilités sont à jour en temps réel, ou par téléphone au <a href={`tel:${site.phone}`}>{site.phoneDisplay}</a>.</p>
+      </div>
+      <div>
+        <MapEmbed title="Carte : cabinet de kinésithérapie au 51 boulevard de Beauséjour, Paris 16e" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="wrap narrow prose">
+      <h2>Patients du 16e et des alentours</h2>
+      <p>Le cabinet reçoit des patients de tout le 16e arrondissement : <strong>La Muette, Ranelagh, Passy, Auteuil, Porte Dauphine, Trocadéro</strong>, ainsi que de Boulogne-Billancourt, Neuilly-sur-Seine et du 15e arrondissement voisin.</p>
+      <p>Les soins ont lieu exclusivement au cabinet : il n’y a pas de visites à domicile.</p>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

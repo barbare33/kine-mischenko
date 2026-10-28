@@ -1,0 +1,46 @@
+---
+import Base from './Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Faq, { type QA } from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import OtherServices from '../components/OtherServices.astro';
+import type { Lang } from '../data/site';
+
+interface Props {
+  lang?: Lang;
+  title: string;
+  description: string;
+  eyebrow: string;
+  h1: string;
+  lead: string;
+  crumb: string;
+  faq: QA[];
+}
+const { lang = 'fr', title, description, eyebrow, h1, lead, crumb, faq } = Astro.props;
+const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const crumbs = [
+  { name: lang === 'fr' ? 'Accueil' : 'Home', href: lang === 'fr' ? '/' : '/en/' },
+  { name: crumb, href: path },
+];
+
+const service = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: title,
+  description,
+  inLanguage: lang,
+  about: { '@type': 'MedicalTherapy', name: crumb },
+  provider: { '@id': 'https://kine-mischenko.fr/#cabinet' },
+};
+---
+<Base title={title} description={description} lang={lang} crumbs={crumbs} schema={[service]}>
+  <PageHero lang={lang} eyebrow={eyebrow} title={h1} lead={lead} />
+  <section class="section">
+    <div class="wrap narrow prose">
+      <slot />
+    </div>
+  </section>
+  <Faq items={faq} lang={lang} />
+  <OtherServices lang={lang} current={path} />
+  <CtaBand lang={lang} />
+</Base>
