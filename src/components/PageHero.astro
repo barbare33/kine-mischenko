@@ -6,7 +6,8 @@ const { lang = 'fr', eyebrow, title, lead, showCta = true } = Astro.props;
 const t = ui[lang];
 ---
 <section class="phero">
-  <div class="wrap">
+  <img class="phero__art" src="/img/line-right.png" alt="" width="798" height="894" />
+  <div class="wrap phero__in">
     <span class="eyebrow">{eyebrow}</span>
     <h1>{title}</h1>
     <hr class="rule" />
@@ -21,6 +22,17 @@ const t = ui[lang];
 </section>
 
 <style>
-  .phero { padding: clamp(40px, 6vw, 80px) 0 clamp(48px, 7vw, 96px); border-bottom: 1px solid var(--stone); }
-  .phero h1 { max-width: 880px; }
+  .phero {
+    position: relative; overflow: hidden;
+    background: var(--sand);
+    padding: clamp(48px, 7vw, 96px) 0 clamp(56px, 8vw, 104px);
+  }
+  .phero__in { position: relative; z-index: 1; }
+  .phero h1 { max-width: 760px; }
+  .phero .eyebrow { color: var(--ink-soft); }
+  .phero__art {
+    position: absolute; bottom: 0; right: clamp(8px, 4vw, 64px);
+    width: clamp(160px, 22vw, 300px); height: auto; pointer-events: none;
+  }
+  @media (max-width: 900px) { .phero__art { display: none; } }
 </style>

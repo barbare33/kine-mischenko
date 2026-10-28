@@ -29,7 +29,7 @@ const person = {
 
   <section class="section">
     <div class="wrap grid grid--2 ab">
-      <div class="ab__mono" aria-hidden="true">AM</div>
+      <div class="ab__mono" aria-hidden="true"><img src="/img/line-left.png" alt="" width="414" height="1104" loading="lazy" /></div>
       <div class="prose">
         <h2>Parcours</h2>
         <ol class="timeline">
@@ -59,11 +59,10 @@ const person = {
   .ab__mono {
     position: sticky; top: 110px;
     aspect-ratio: 4 / 5; max-width: 420px; width: 100%;
-    display: grid; place-items: center;
-    background: linear-gradient(160deg, var(--sand), var(--stone));
-    font-family: var(--serif); font-size: clamp(5rem, 14vw, 9rem); color: var(--accent); font-style: italic;
-    border-radius: var(--radius);
+    display: flex; align-items: flex-end; justify-content: center;
+    background: var(--sand); overflow: hidden;
   }
+  .ab__mono img { height: 88%; width: auto; }
   @media (max-width: 900px) { .ab__mono { position: static; max-width: 240px; } }
   .timeline { list-style: none; padding: 0; border-left: 1px solid var(--stone); }
   .timeline li { padding: 0 0 1.2rem 1.5rem; position: relative; margin: 0; }

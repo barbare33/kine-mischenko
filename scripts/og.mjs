@@ -1,15 +1,17 @@
-// Génère l'image de partage (Open Graph) public/og.jpg : node scripts/og.mjs
+// Génère l'image de partage (Open Graph) public/og.jpg à partir de la DA : node scripts/og.mjs
 import sharp from 'sharp';
 
-const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630">
-  <rect width="1200" height="630" fill="#faf7f2"/>
-  <rect x="0" y="0" width="16" height="630" fill="#2e4a45"/>
-  <text x="96" y="200" font-family="Georgia, serif" font-size="26" letter-spacing="6" fill="#a8875a">MASSEUR-KINÉSITHÉRAPEUTE D.E. · PARIS 16</text>
-  <text x="96" y="320" font-family="Georgia, serif" font-size="92" fill="#1d2626">Anastasia Mischenko</text>
-  <rect x="96" y="362" width="64" height="2" fill="#a8875a"/>
-  <text x="96" y="440" font-family="Georgia, serif" font-style="italic" font-size="40" fill="#2e4a45">Kiné du sport · Rééducation post-opératoire · Dos</text>
-  <text x="96" y="540" font-family="Arial, sans-serif" font-size="28" fill="#4a5555">51 bd de Beauséjour, 75016 Paris · Métro Ranelagh</text>
-</svg>`;
+const beige = { r: 221, g: 212, b: 195 };
+const card = await sharp('scripts/da-source.png')
+  .extract({ left: 4, top: 4, width: 938, height: 618 }) // retire la bordure grise
+  .resize({ height: 630 })
+  .toBuffer();
+const { width } = await sharp(card).metadata();
+const pad = Math.max(0, Math.round((1200 - width) / 2));
 
-await sharp(Buffer.from(svg)).jpeg({ quality: 88 }).toFile('public/og.jpg');
+await sharp(card)
+  .extend({ left: pad, right: 1200 - width - pad, background: beige })
+  .flatten({ background: beige })
+  .jpeg({ quality: 88 })
+  .toFile('public/og.jpg');
 console.log('public/og.jpg généré');

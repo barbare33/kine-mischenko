@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import HomeHero from '../components/HomeHero.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
 import MapEmbed from '../components/MapEmbed.astro';
@@ -32,33 +33,7 @@ const faq = [
   title="Kinésithérapeute Paris 16 – Anastasia Mischenko | Sport, post-op, dos"
   description="Anastasia Mischenko, kinésithérapeute D.E. à Paris 16e (51 bd de Beauséjour, métro Ranelagh). Kiné du sport, rééducation post-opératoire, mal de dos. Rendez-vous sur Doctolib."
 >
-  <section class="hero">
-    <div class="wrap hero__grid">
-      <div>
-        <span class="eyebrow">Masseur-Kinésithérapeute D.E. · Paris 16e</span>
-        <h1>Kinésithérapie du sport &amp; rééducation, <em>au cœur du 16e</em></h1>
-        <hr class="rule" />
-        <p class="lead">
-          Anastasia Mischenko vous accueille dans son cabinet du boulevard de Beauséjour pour une rééducation
-          précise et personnalisée : blessures sportives, suites de chirurgie orthopédique, douleurs de dos.
-        </p>
-        <div class="btn-row">
-          <a class="btn btn--primary" href={site.doctolib} target="_blank" rel="noopener">Prendre rendez-vous</a>
-          <a class="btn btn--ghost" href={`tel:${site.phone}`}>{site.phoneDisplay}</a>
-        </div>
-      </div>
-      <aside class="infos" aria-label="Informations pratiques">
-        <p class="infos__h">Le cabinet</p>
-        <dl>
-          <div><dt>Adresse</dt><dd>{site.address.street}<br />75016 Paris</dd></div>
-          <div><dt>Accès</dt><dd>Métro Ranelagh (9) · La Muette (9)<br />RER C Boulainvilliers</dd></div>
-          <div><dt>Conventionnement</dt><dd>Conventionnée · Carte Vitale acceptée</dd></div>
-          <div><dt>Langues</dt><dd>Français · English</dd></div>
-        </dl>
-        <a href="/cabinet-acces/" class="infos__link">Plan et accès →</a>
-      </aside>
-    </div>
-  </section>
+  <HomeHero />
 
   <section class="section">
     <div class="wrap">
@@ -96,7 +71,7 @@ const faq = [
 
   <section class="section">
     <div class="wrap grid grid--2 about">
-      <div class="monogram" aria-hidden="true">AM</div>
+      <div class="monogram" aria-hidden="true"><img src="/img/line-right.png" alt="" width="798" height="894" loading="lazy" /></div>
       <div>
         <span class="eyebrow">Votre kinésithérapeute</span>
         <h2>Anastasia Mischenko</h2>
@@ -130,33 +105,21 @@ const faq = [
 </Base>
 
 <style>
-  .hero { padding: clamp(48px, 8vw, 112px) 0; border-bottom: 1px solid var(--stone); }
-  .hero__grid { display: grid; gap: 48px; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); align-items: center; }
-  .hero h1 em { font-style: italic; color: var(--accent); }
-  .infos { background: var(--white); border: 1px solid var(--stone); padding: 32px; border-radius: var(--radius); }
-  .infos__h { font-family: var(--serif); font-size: 1.6rem; margin-bottom: 1rem; }
-  .infos dl { margin: 0; }
-  .infos dl > div { padding: 0.8rem 0; border-top: 1px solid var(--stone); }
-  .infos dt { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
-  .infos dd { margin: 0.2rem 0 0; font-size: 0.95rem; }
-  .infos__link { display: inline-block; margin-top: 1rem; font-size: 0.9rem; }
-  @media (max-width: 900px) { .hero__grid { grid-template-columns: 1fr; } }
 
-  .svc__n { font-family: var(--serif); font-size: 1rem; color: var(--gold); display: block; margin-bottom: 1.2rem; }
+  .svc__n { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.2em; color: var(--gold); display: block; margin-bottom: 1.2rem; }
 
   .approach { align-items: start; }
   .steps { list-style: none; padding: 0; counter-reset: s; }
   .steps li { counter-increment: s; position: relative; padding: 0 0 1.6rem 3.5rem; margin: 0; color: var(--ink-soft); }
-  .steps li::before { content: counter(s, decimal-leading-zero); position: absolute; left: 0; top: -0.2rem; font-family: var(--serif); font-size: 1.8rem; color: var(--gold); }
+  .steps li::before { content: counter(s, decimal-leading-zero); position: absolute; left: 0; top: 0.15rem; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.15em; color: var(--gold); }
   .steps strong { color: var(--ink); font-weight: 500; }
 
   .about { align-items: center; }
   .monogram {
     aspect-ratio: 4 / 5; max-width: 420px; width: 100%;
-    display: grid; place-items: center;
-    background: linear-gradient(160deg, var(--sand), var(--stone));
-    font-family: var(--serif); font-size: clamp(5rem, 14vw, 9rem); color: var(--accent); font-style: italic;
-    border-radius: var(--radius);
+    display: flex; align-items: flex-end; justify-content: center;
+    background: var(--sand); overflow: hidden;
   }
+  .monogram img { width: 78%; height: auto; }
   .loc { align-items: center; }
 </style>

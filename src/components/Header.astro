@@ -77,21 +77,21 @@ const home = lang === 'fr' ? '/' : '/en/';
     border-bottom: 1px solid var(--stone);
   }
   .hdr__in { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 76px; }
-  .brand { text-decoration: none; color: var(--ink); display: flex; flex-direction: column; line-height: 1.1; }
-  .brand__name { font-family: var(--serif); font-size: 1.6rem; font-weight: 500; }
-  .brand__sub { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+  .brand { text-decoration: none; color: var(--ink); display: flex; flex-direction: column; line-height: 1.1; white-space: nowrap; }
+  .brand__name { font-size: 0.95rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; }
+  .brand__sub { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
 
-  .nav { display: flex; align-items: center; gap: 24px; }
-  .nav > ul { display: flex; align-items: center; gap: 4px; list-style: none; margin: 0; padding: 0; }
+  .nav { display: flex; align-items: center; gap: 16px; }
+  .nav > ul { display: flex; align-items: center; gap: 0; list-style: none; margin: 0; padding: 0; }
   .nav li { margin: 0; position: relative; }
   .nav__link {
-    display: block; padding: 0.5rem 0.75rem; font-size: 0.88rem; color: var(--ink);
+    display: block; padding: 0.5rem 0.55rem; font-size: 0.68rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); white-space: nowrap;
     text-decoration: none; background: none; border: 0; font-family: inherit; cursor: pointer;
   }
   .nav__link:hover, .nav__link[aria-current='page'] { color: var(--accent); }
-  .nav__link[aria-current='page'] { text-decoration: underline; text-decoration-color: var(--gold); }
+  .nav__link[aria-current='page'] { text-decoration: underline; text-underline-offset: 6px; }
   .nav__toggle::after { content: ''; display: inline-block; width: 6px; height: 6px; margin-left: 8px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: translateY(-3px) rotate(45deg); }
-  .nav__lang { color: var(--muted); font-size: 0.8rem; letter-spacing: 0.06em; }
+  .nav__lang { color: var(--muted); }
 
   .sub {
     display: none; position: absolute; top: calc(100% + 8px); left: 0; min-width: 300px;
@@ -101,7 +101,7 @@ const home = lang === 'fr' ? '/' : '/en/';
   .sub a { display: block; padding: 0.6rem 0.8rem; font-size: 0.9rem; color: var(--ink); text-decoration: none; border-radius: var(--radius); }
   .sub a:hover, .sub a[aria-current='page'] { background: var(--sand); color: var(--accent); }
   .nav__toggle[aria-expanded='true'] + .sub { display: block; }
-  @media (hover: hover) and (min-width: 1025px) {
+  @media (hover: hover) and (min-width: 1141px) {
     .has-sub:hover .sub { display: block; }
     .has-sub .sub::before { content: ''; position: absolute; top: -10px; left: 0; right: 0; height: 10px; }
   }
@@ -113,7 +113,7 @@ const home = lang === 'fr' ? '/' : '/en/';
   .burger[aria-expanded='true'] span[aria-hidden]:nth-of-type(2) { transform: translateY(4px) rotate(45deg); }
   .burger[aria-expanded='true'] span[aria-hidden]:nth-of-type(3) { transform: translateY(-4px) rotate(-45deg); }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1140px) {
     .burger { display: block; }
     .nav {
       display: none; position: fixed; inset: 76px 0 0 0; background: var(--ivory);
@@ -121,8 +121,8 @@ const home = lang === 'fr' ? '/' : '/en/';
     }
     .nav.is-open { display: flex; }
     .nav > ul { flex-direction: column; align-items: stretch; }
-    .nav__link { font-family: var(--serif); font-size: 1.6rem; padding: 0.6rem 0; text-align: left; width: 100%; }
-    .nav__lang { font-family: var(--sans); font-size: 0.95rem; margin-top: 1rem; }
+    .nav__link { font-size: 0.95rem; padding: 0.8rem 0; text-align: left; width: 100%; }
+    .nav__lang { margin-top: 1rem; }
     .sub { position: static; box-shadow: none; border: 0; padding: 0 0 0.5rem 0; background: transparent; min-width: 0; }
     .sub a { font-size: 1rem; padding: 0.5rem 0 0.5rem 1rem; border-left: 1px solid var(--stone); border-radius: 0; }
     .nav__cta { margin-top: 1.5rem; }

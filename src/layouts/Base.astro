@@ -110,7 +110,7 @@ const allSchema = [business, ...(breadcrumb ? [breadcrumb] : []), ...schema];
     <meta name="geo.position" content={`${site.geo.lat};${site.geo.lng}`} />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta name="theme-color" content="#2e4a45" />
+    <meta name="theme-color" content="#ddd4c3" />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     {allSchema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}

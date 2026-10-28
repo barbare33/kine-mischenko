@@ -1,0 +1,81 @@
+---
+import { site, type Lang } from '../data/site';
+
+// Hero de la page d'accueil, reprenant la DA de la carte de visite :
+// fond beige, capitales blanches espacées, dessins au trait de part et d'autre.
+interface Props { lang?: Lang }
+const { lang = 'fr' } = Astro.props;
+const fr = lang === 'fr';
+---
+<section class="hh">
+  <img class="hh__art hh__art--l" src="/img/line-left.png" alt="" width="414" height="1104" />
+  <img class="hh__art hh__art--r" src="/img/line-right.png" alt="" width="798" height="894" />
+  <div class="wrap hh__in">
+    <p class="hh__name">{site.name}</p>
+    <h1 class="hh__title">
+      {fr ? <>Kinésithérapeute<br />diplômée d’État</> : <>Physiotherapist<br />state registered</>}
+      <span class="hh__place">{fr ? 'Paris 16e · Ranelagh – La Muette' : 'Paris 16th · English spoken'}</span>
+    </h1>
+    <p class="hh__lead">
+      {fr
+        ? 'Kinésithérapie du sport, rééducation post-opératoire et douleurs de dos, au 51 boulevard de Beauséjour.'
+        : 'Sports physiotherapy, post-surgery rehabilitation and back pain, at 51 boulevard de Beauséjour.'}
+    </p>
+    <div class="btn-row hh__cta">
+      <a class="btn btn--primary" href={site.doctolib} target="_blank" rel="noopener">{fr ? 'Prendre rendez-vous' : 'Book an appointment'}</a>
+      <a class="btn btn--ghost" href={`tel:${site.phone}`}>{fr ? site.phoneDisplay : site.phoneDisplayIntl}</a>
+    </div>
+  </div>
+</section>
+
+<section class="facts" aria-label={fr ? 'Informations pratiques' : 'Practical information'}>
+  <dl class="wrap facts__in">
+    <div><dt>{fr ? 'Adresse' : 'Address'}</dt><dd>{site.address.street}, 75016 Paris</dd></div>
+    <div><dt>{fr ? 'Accès' : 'Getting here'}</dt><dd>{fr ? 'Métro' : 'Metro'} Ranelagh · La Muette · RER C</dd></div>
+    <div><dt>{fr ? 'Conventionnée' : 'Insurance'}</dt><dd>{fr ? 'Carte Vitale acceptée' : 'Carte Vitale accepted'}</dd></div>
+    <div><dt>{fr ? 'Langues' : 'Languages'}</dt><dd>{fr ? 'Français · English' : 'English · Français'}</dd></div>
+  </dl>
+</section>
+
+<style>
+  .hh {
+    position: relative; overflow: hidden;
+    background: var(--sand);
+    padding: clamp(72px, 11vw, 150px) 0 clamp(80px, 11vw, 150px);
+    text-align: center;
+  }
+  .hh__in { position: relative; z-index: 1; }
+  .hh__name, .hh__title {
+    color: var(--white);
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-shadow: 0 1px 14px rgba(118, 101, 79, 0.25);
+  }
+  .hh__name { font-size: clamp(1rem, 2.6vw, 1.75rem); margin: 0 0 1.6rem; }
+  .hh__title { font-size: clamp(1.5rem, 4.4vw, 2.9rem); line-height: 1.35; font-weight: 600; margin: 0; }
+  .hh__place {
+    display: block; margin-top: 1.6rem;
+    font-size: clamp(0.7rem, 1.5vw, 0.85rem); font-weight: 500; letter-spacing: 0.24em;
+    color: var(--ink); text-shadow: none;
+  }
+  .hh__lead { max-width: 520px; margin: 1.6rem auto 0; color: var(--ink-soft); }
+  .hh__cta { justify-content: center; }
+
+  .hh__art { position: absolute; bottom: 0; height: auto; pointer-events: none; }
+  .hh__art--l { left: clamp(8px, 3vw, 48px); width: clamp(70px, 11vw, 150px); }
+  .hh__art--r { right: clamp(8px, 3vw, 48px); width: clamp(130px, 21vw, 290px); }
+  @media (max-width: 720px) {
+    .hh { padding-bottom: 210px; }
+    .hh__art { opacity: 0.85; }
+  }
+
+  .facts { border-bottom: 1px solid var(--stone); background: var(--ivory); }
+  .facts__in {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: 0; margin-top: 0; margin-bottom: 0;
+  }
+  .facts__in > div { padding: 1.4rem 1rem 1.4rem 0; }
+  .facts dt { font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  .facts dd { margin: 0.2rem 0 0; font-size: 0.9rem; }
+</style>
